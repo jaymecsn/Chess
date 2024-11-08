@@ -1,7 +1,11 @@
 package main;
 
+import pieces.Knight;
+import pieces.Piece;
+
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class Board extends JPanel {
 
@@ -10,8 +14,15 @@ public class Board extends JPanel {
     int cols = 8;
     int rows = 8;
 
+    ArrayList<Piece> pieceList = new ArrayList<>();
+
     public Board(){
         this.setPreferredSize(new Dimension(cols * tileSize, rows * tileSize));
+        addPieces();
+    }
+
+    public void addPieces(){
+        pieceList.add(new Knight(this,2,0,false));
     }
 
     public void paintComponent(Graphics g) {
@@ -22,5 +33,9 @@ public class Board extends JPanel {
                 g2d.setColor((c+r) %2==0 ? new Color(5, 147, 103) : new Color(130, 202, 200));
                 g2d.fillRect(c*tileSize,r*tileSize, tileSize,tileSize);
             }
+
+        for(Piece piece : pieceList) {
+            piece.paint(g2d);
+        }
     }
 }
