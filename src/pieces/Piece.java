@@ -30,10 +30,8 @@ public class Piece {
 
     Board board;
 
-    public Piece(Board board) {
-    }
 
-    public void Piece(Board board){
+    public  Piece(Board board){
         this.board = board;
     }
 
